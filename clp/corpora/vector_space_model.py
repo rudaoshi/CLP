@@ -12,5 +12,6 @@ class WordIdMap(object):
 
         self.dictionary.doc2bow(document.words, allow_update = True)
 
-    def find_stop_words(self):
-        pass
+    def save_as_text(self, file_name):
+
+        self.dictionary.save_as_text(file_name)
