@@ -2,21 +2,16 @@
 
 class Document(object):
 
-    def __init__(self, content):
+    def __init__(self, id, content):
+        self.id = id
         self.content = content
         self.sentences = []
-        self.words = []
 
-    def segment(self, segmenter):
-
-        return segmenter.segment(self.content)
 
     def split_sentences(self, sentence_segmenter):
-        self.sentences = sentence_segmenter.segment(self.content)
+        self.sentences = list(sentence_segmenter.segment(self.content))
 
     def segement_words(self, word_segmenter):
 
-        self.words = []
-
         for sentence in self.sentences:
-            self.words.append(word_segmenter.segment(sentence))
+            sentence.segement_words(word_segmenter)
